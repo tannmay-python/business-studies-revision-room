@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d32">
+  <meta name="description" content="Clear Business Studies chapter notes, case-based practice and active recall for Chapters 1–8, 11 and 12.">
+  <title>Business Studies · Revision room</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%232d64f0'/%3E%3Cpath d='M19 14h20l8 8v28H19z' fill='white'/%3E%3Cpath d='M39 14v9h8M25 31h16M25 38h16M25 45h10' fill='none' stroke='%232d64f0' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./data.js"></script>
+  <script defer src="./data-more.js"></script>
+  <script defer src="./data-rest.js"></script>
+  <script defer src="./content-boost.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="rail" id="rail">
+    <a class="brand" href="#" aria-label="Business Studies revision room"><span class="brand-mark">B</span><span class="brand-name">revision room<span>BUSINESS STUDIES · XII</span></span></a>
+    <div class="rail-label">STUDY MODE</div>
+    <nav class="primary-nav" aria-label="Study modes">
+      <button class="nav-item active" data-view="notes"><span class="nav-icon">▤</span>Chapter notes</button>
+      <button class="nav-item" data-view="practice"><span class="nav-icon">◉</span>Question bank<span class="nav-count" id="bank-count">—</span></button>
+      <button class="nav-item" data-view="recall"><span class="nav-icon">↻</span>Recall cards</button>
+    </nav>
+    <div class="rail-label chapter-label">YOUR CHAPTERS</div>
+    <nav id="chapter-list" class="chapter-list" aria-label="Chapters"></nav>
+    <div class="rail-bottom"><div class="progress-caption"><span>Recall mastered</span><strong id="progress-percent">0%</strong></div><div class="progress-track"><span id="progress-fill"></span></div><p id="progress-detail">Mark cards as known to track recall.</p></div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobile-menu" aria-label="Show chapters">☰</button>
+      <div class="breadcrumb"><span>BUSINESS STUDIES</span><i>/</i><strong id="crumb">Chapter notes</strong></div>
+      <div class="top-actions"><span class="save-state"><span class="save-dot"></span>Saved on this device</span><button class="quiet-button" id="sprint-button">10-question sprint</button></div>
+    </header>
+    <section id="view" class="view" aria-live="polite"></section>
+    <footer class="site-footer"><span>Notes shaped from your chapter PDFs and school revision worksheets.</span><span>Understand the idea. Spot the clue.</span></footer>
+  </main>
+</div>
+</body>
+</html>
