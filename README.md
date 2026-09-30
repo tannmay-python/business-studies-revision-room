@@ -9,6 +9,10 @@ A lightweight, static revision site for Class XII Business Studies chapters 1–
 
 The notes and question styles are grounded in the chapter PDFs and school revision worksheets supplied for this study project. Consumer Commission limits in the notes follow the figures printed in that supplied chapter.
 
+## Source materials
+
+The public repository includes all 48 supplied study files in `source-materials/`, preserving the original `raw chapters/` and `school worksheets/` folders: 10 chapter PDFs and 38 worksheet or answer files. The GitHub Pages workflow serves the interactive site from `dist/`; the complete source set remains browsable in the repository.
+
 ## Run locally
 
 Open `dist/index.html` in a browser, or serve the `dist` folder with any static web server.
