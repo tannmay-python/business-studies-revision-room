@@ -11,6 +11,10 @@
 
   try{progress=JSON.parse(localStorage.getItem(storageKey))||progress}catch(e){}
   function esc(s){return String(s||"").replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+  function noteMarkup(s){
+    var text=esc(s);
+    return text.replace(/(^|[.!?]\s+)([A-Z][A-Za-z0-9’'&(),/\- ]{1,54}?):(?=\s)/g,function(_,lead,label){return lead+'<strong>'+label+':</strong>'});
+  }
   function shuffle(a){var x=a.slice();for(var i=x.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=x[i];x[i]=x[j];x[j]=t}return x}
   function makeOptions(correct,source,answerIndex){var opts=new Array(4);opts[answerIndex]=correct;var others=source.filter(function(x){return x!==correct});var p=0;for(var i=0;i<4;i++){if(i!==answerIndex)opts[i]=others[p++%others.length]}return opts}
   chapters.forEach(function(c){
@@ -4738,7 +4742,7 @@
     return '<div class="page page-notes">'+intro+tabs+body+'</div>';
   }
   function renderStudySection(section,key){
-    return '<section class="study-section" id="note-section-'+key+'" tabindex="-1">'+(section.category?'<div class="section-category">'+esc(section.category)+'</div>':'')+'<h3>'+esc(section.title)+'</h3><p class="card-lead">'+esc(section.lead)+'</p>'+(section.examPrompt?'<p class="exam-question"><span>Typical question</span>'+esc(section.examPrompt)+'</p>':'')+'<ol class="study-points" start="'+(section.start||1)+'">'+section.items.map(function(item,i){return '<li><div class="point-heading"><span class="point-number" aria-hidden="true">'+String((section.start||1)+i).padStart(2,"0")+'</span><h4>'+esc(item[0])+'</h4></div><p>'+esc(item[1])+'</p>'+(item[2]?'<div class="study-example"><span>Example / case clue</span><p>'+esc(item[2])+'</p></div>':'')+'</li>'}).join('')+'</ol>'+(section.source?'<p class="section-source">'+esc(section.source)+'</p>':'')+'</section>';
+    return '<section class="study-section" id="note-section-'+key+'" tabindex="-1">'+(section.category?'<div class="section-category">'+esc(section.category)+'</div>':'')+'<h3>'+esc(section.title)+'</h3><p class="card-lead">'+noteMarkup(section.lead)+'</p>'+(section.examPrompt?'<p class="exam-question"><span>Typical question</span>'+noteMarkup(section.examPrompt)+'</p>':'')+'<ol class="study-points" start="'+(section.start||1)+'">'+section.items.map(function(item,i){return '<li><div class="point-heading"><span class="point-number" aria-hidden="true">'+String((section.start||1)+i).padStart(2,"0")+'</span><h4>'+esc(item[0])+'</h4></div><p>'+noteMarkup(item[1])+'</p>'+(item[2]?'<div class="study-example"><span>Example / case clue</span><p>'+noteMarkup(item[2])+'</p></div>':'')+'</li>'}).join('')+'</ol>'+(section.source?'<p class="section-source">'+noteMarkup(section.source)+'</p>':'')+'</section>';
   }
   function bindNotes(){
     function refresh(focusTopic){document.getElementById("view").innerHTML=renderNotes();bindNotes();if(focusTopic){var heading=document.getElementById("topic-title-"+notesState.topic);if(heading){heading.focus({preventScroll:true});document.getElementById("study-topic-"+notesState.topic).scrollIntoView({block:"start"})}}}
